@@ -11,7 +11,7 @@ function cargar() {
     }).done(parseData);
 }
 
-function leerCsv(texto, separador = ",", omitirEncabezado = false) {
+function leerCsv(texto, separador = '",', omitirEncabezado = false) {
     if (typeof texto !== "string") {
         throw TypeError("El argumento debe ser una cadena de texto");
     }

@@ -2,11 +2,15 @@ cargar();
 
 ctx = [];
 
-defaultGrafica = "bar";
+defaultGrafica = "line";
 tipoGrafica = [
     "bar",
     "bar",
-    "bar"
+    "bar",
+    "pie",
+    "",
+    "",
+    ""
 ]
 
 function load(){
@@ -23,7 +27,7 @@ function load(){
     }
 
     for(let i=0; i<pregunta.length; i++){
-        if(tipoGrafica[i]===undefined){
+        if(tipoGrafica[i]===undefined || tipoGrafica[i]===""){
             graficar(ctx[i], defaultGrafica, pregunta[i], respuesta[i]);
         }else{
             graficar(ctx[i], tipoGrafica[i], pregunta[i], respuesta[i]);
