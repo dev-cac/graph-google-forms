@@ -2,15 +2,12 @@ cargar();
 
 ctx = [];
 
-defaultGrafica = "line";
+defaultGrafica = "pie";
 tipoGrafica = [
     "bar",
     "bar",
     "bar",
-    "pie",
-    "",
-    "",
-    ""
+    "line",
 ]
 
 function load(){
