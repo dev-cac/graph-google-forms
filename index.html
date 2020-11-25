@@ -1,3 +1,5 @@
+<!-- Para Graficar se debe tener en cuenta que los datos(preguntas/respuestas) no tengan comas ya que esta es la forma de separacion -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,8 +15,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
-    <div id="app"></div>
+    <div class="row">
+        <div id="app" class="col s6">
+            <canvas id="barr"></canvas>
+        </div>
+    </div>
 </body>
+<script src="src/graficar/chartjs.js"></script>
 <script src="src/graficar/data.js"></script>
 <script src="src/index.js"></script>
 </html>

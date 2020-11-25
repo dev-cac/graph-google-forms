@@ -1,4 +1,4 @@
-export function graficar(ctx, tipo, titulo, datos){
+function graficar(ctx, tipo, titulo, datos){
     let opcion;
     var opciones = [];
     var eleccion = [];
