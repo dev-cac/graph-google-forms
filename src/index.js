@@ -1,15 +1,15 @@
-cargar();
-
 ctx = [];
+const app = document.getElementById("app");
 
 defaultGrafica = "pie";
 tipoGrafica = [
     "bar",
-    "bar",
-    "bar",
+    "pie",
+    "doughnut",
     "line",
 ]
 
+cargar();
 function load(){
     console.log(pregunta);
     console.log(respuesta);
@@ -33,7 +33,6 @@ function load(){
 }
 
 function crearElemento(nomid){
-    const app = document.getElementById("app");
     let newElement = document.createElement("div");
     let newCanvas = document.createElement("canvas");
 
