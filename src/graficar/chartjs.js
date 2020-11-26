@@ -20,7 +20,7 @@ function graficar(ctx, tipo, titulo, datos){
     }
 
     /* Asigamos las opciones de la grafica */
-    if(tipo == "pie" || tipo == "doughnut"){
+    if(tipo == "pie" || tipo == "doughnut" || tipo == "polarArea"){
         opcion = {
             responsive: true,
             title: {
@@ -57,6 +57,11 @@ function graficar(ctx, tipo, titulo, datos){
             },
             scales: {
                 yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes:[{
                     ticks: {
                         beginAtZero: true
                     }

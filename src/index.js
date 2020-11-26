@@ -1,44 +1,23 @@
-ctx = [];
-const app = document.getElementById("app");
+/* Tipos de Graficas
 
-defaultGrafica = "pie";
-tipoGrafica = [
-    "bar",
-    "pie",
-    "doughnut",
-    "line",
-]
+- pie
+- doughnut
+- line
+- bar
+- horizontalBar
+- polarArea
+
+*/
 
 cargar();
-function load(){
-    console.log(pregunta);
-    console.log(respuesta);
 
-    for(let i=0; i<pregunta.length; i++){
-        let identificador = "num"+i;
-        ctx.push(identificador);
-    }
+const app = document.getElementById("graficas");
 
-    for(let i=0; i<ctx.length; i++){
-        crearElemento(ctx[i]);
-    }
+const defaultGrafica = "polarArea";
 
-    for(let i=0; i<pregunta.length; i++){
-        if(tipoGrafica[i]===undefined || tipoGrafica[i]===""){
-            graficar(ctx[i], defaultGrafica, pregunta[i], respuesta[i]);
-        }else{
-            graficar(ctx[i], tipoGrafica[i], pregunta[i], respuesta[i]);
-        }
-    }
-}
-
-function crearElemento(nomid){
-    let newElement = document.createElement("div");
-    let newCanvas = document.createElement("canvas");
-
-    newCanvas.id = nomid;
-    newElement.setAttribute("class", "col s6");
-
-    newElement.appendChild(newCanvas);
-    app.appendChild(newElement);
-}
+const tipoGrafica = [
+    "doughnut",
+    "line",
+    "horizontalBar",
+    "bar",
+]
