@@ -11,7 +11,7 @@
 
 cargar();
 
-const app = document.getElementById("graficas");
+const app = document.getElementById("app");
 
 const defaultGrafica = "polarArea";
 
