@@ -100,7 +100,7 @@ function crearElemento(nomid){
     let newCanvas = document.createElement("canvas");
 
     newCanvas.id = nomid;
-    newElement.setAttribute("class", "col s6");
+    newElement.setAttribute("class", "col m12 l6");
 
     newElement.appendChild(newCanvas);
     app.appendChild(newElement);

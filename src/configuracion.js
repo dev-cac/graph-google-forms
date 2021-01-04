@@ -9,8 +9,13 @@
 
 */
 
+
+/* Configuracion de funcionamiento */
+
 const app = document.getElementById("app");
 
+
+/* Configuracion de diseño de las graficas */
 const defaultGrafica = "polarArea";
 
 const tipoGrafica = [
@@ -22,5 +27,7 @@ const tipoGrafica = [
 
 const nombreArchivo = "form";
 const nombrePreguntas = true;
+
+/* Ejecutar Programa */
 
 cargar();
