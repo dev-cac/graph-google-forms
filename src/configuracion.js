@@ -12,13 +12,11 @@
 
 /* Configuracion de funcionamiento */
 
-const app = document.getElementById("app");          // se obtiene el id del cuadro donde colocaremos las graficas
+const app = document.getElementById("app");
 
-const clasesDelCuadro = "col s12 m12 l6";            // Estas clases fueron sacadas de Materialize
-const mostrarInformacion = true;                     // muestra los datos recopilador por consola
+const clasesDelCuadro = "col s12 m12 l6";
+const mostrarInformacion = true;
 
-
-/* Configuracion de diseño de las graficas */
 const defaultGrafica = "polarArea";
 
 const tipoGrafica = [

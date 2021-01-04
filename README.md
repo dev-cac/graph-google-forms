@@ -1,6 +1,83 @@
 # Graficar Datos de Google Forms
 
-- Se puede Ajustar el tipo de grafica en index.js
-- Por defecto el archivo csv tiene por Nombre "archivo.csv"
+- Contiene un archivo de configuración, en el que se podran cambiar algunos aspectos de las graficas.
 
-![Captura](https://github.com/LuisFOsG/Graficas-Chartjs/blob/master/img/Graficas.png)
+```JS
+
+const app = document.getElementById("app");
+
+const clasesDelCuadro = "col s12 m12 l6";
+const mostrarInformacion = true;
+
+const defaultGrafica = "polarArea";
+const tipoGrafica = [
+    "doughnut",
+    "line",
+    "horizontalBar",
+]
+
+const nombreArchivo = "form";
+const incluirNombrePreguntas = true;
+
+iniciar();
+
+```
+
+Como definir donde se montaran todas las graficas.
+
+```JS
+const app = document.getElementById("app");
+```
+
+Colocarle clases css a cada cuadro y mostrar los datos recolectados del archivo.
+
+```JS
+const clasesDelCuadro = "col s12 m12 l6";
+const mostrarInformacion = true;
+```
+
+Definir que tipos de Grafica queremos en cada caso
+
+```JS
+const defaultGrafica = "polarArea";
+const tipoGrafica = [
+    "doughnut",
+    "line",
+    "horizontalBar",
+]
+```
+
+### Tipos de Graficas "Probadas"
+
+- pie
+- doughnut
+- line
+- bar
+- horizontalBar
+- polarArea
+
+Asignarle un nombre al archivo .csv y decidir si incluir en nombre de las preguntas del formulario o no.
+
+```JS
+const nombreArchivo = "form";
+const incluirNombrePreguntas = true;
+```
+
+Dar inicio al archivo encargado de las graficas.
+
+```JS
+iniciar();
+```
+
+<img src="./img/Graficas.png" >
+
+---
+
+Sus dependencias son
+[Chart.js](https://github.com/chartjs)
+y
+[jQuery](https://jquery.com/).
+
+Las clases incluidas son de Materialize y se pueden cambiar facilmente :D.
+
+---
