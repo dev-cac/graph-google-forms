@@ -5,18 +5,18 @@ var respuesta = [];
 
 function cargar() {
     $.ajax({
-        url: "archivo.csv",
+        url: nombreArchivo + ".csv",
         dataType: "text",
         contentType: "charset-utf-8",
     }).done(parseData);
 }
 
-function leerCsv(texto, separador = '",', omitirEncabezado = false) {
+function leerCsv(texto, separador = '",', encabezado = nombrePreguntas) {
     if (typeof texto !== "string") {
         throw TypeError("El argumento debe ser una cadena de texto");
     }
     return texto
-        .slice(omitirEncabezado ? texto.indexOf("\n") + 1 : 0)
+        .slice(encabezado ? 0 :  texto.indexOf("\n") + 1)
         .split("\n")
         .map((l) => l.split(separador));
 }
@@ -34,19 +34,28 @@ function parseData(data) {
 }
 
 function memoria(data) {
-    for (let i = 0; i < data.length; i++) {
-        data[i].shift();
-    }
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data[i].length; j++) {
-            data[i][j] = data[i][j].replaceAll('"', "");
+    if(nombrePreguntas){
+        for (let i = 0; i < data.length; i++) {
+            data[i].shift();
+        }
+        for (let i = 0; i < data.length; i++) {
+            for (let j = 0; j < data[i].length; j++) {
+                data[i][j] = data[i][j].replaceAll('"', "");
+            }
+        }
+        /* Ingresa todas las preguntas en un array */
+        for (let i = 0; i < data[0].length; i++) {
+            pregunta.push(data[0][i]);
+        }
+        data.shift();
+    } else {
+        for (let i = 0; i < data.length; i++) {
+            data[i].shift();
+        }
+        for (let i = 0; i < data[0].length; i++) {
+            pregunta.push("");
         }
     }
-    /* Ingresa todas las preguntas en un array */
-    for (let i = 0; i < data[0].length; i++) {
-        pregunta.push(data[0][i]);
-    }
-    data.shift();
 
     /* Cada respuesta queda en un array */
     let arrayMemoria = [];

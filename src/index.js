@@ -9,8 +9,6 @@
 
 */
 
-cargar();
-
 const app = document.getElementById("app");
 
 const defaultGrafica = "polarArea";
@@ -21,3 +19,8 @@ const tipoGrafica = [
     "horizontalBar",
     "bar",
 ]
+
+const nombreArchivo = "form";
+const nombrePreguntas = true;
+
+cargar();
