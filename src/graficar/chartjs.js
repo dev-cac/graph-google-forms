@@ -37,6 +37,7 @@ function graficar(ctx, tipo, titulo, datos){
                     var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
                       return previousValue + currentValue;
                     });
+
                     var currentValue = dataset.data[tooltipItem.index];
                     var precentage = Math.floor(((currentValue/total) * 100)+0.5);
 

@@ -12,7 +12,10 @@
 
 /* Configuracion de funcionamiento */
 
-const app = document.getElementById("app");
+const app = document.getElementById("app");          // se obtiene el id del cuadro donde colocaremos las graficas
+
+const clasesDelCuadro = "col s12 m12 l6";            // Estas clases fueron sacadas de Materialize
+const mostrarInformacion = true;                     // muestra los datos recopilador por consola
 
 
 /* Configuracion de diseño de las graficas */
@@ -22,12 +25,12 @@ const tipoGrafica = [
     "doughnut",
     "line",
     "horizontalBar",
-    "bar",
 ]
 
 const nombreArchivo = "form";
-const nombrePreguntas = true;
+const incluirNombrePreguntas = true;
 
-/* Ejecutar Programa */
 
-cargar();
+/* Ejecutar el Programa */
+
+iniciar();
