@@ -1,0 +1,15 @@
+{
+  "name": "graficas-chartjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "",
+    "start": ""
+  },
+  "repository": "https://github.com/LuisFOsG/Graficas-Chartjs.git",
+  "author": "Luis Osorio <luisfernandogarciaosorio@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^5.20.2"
+  }
+}

@@ -1,3 +1,5 @@
+import "./chartjs";
+
 var pregunta = [];
 var respuesta = [];
 
