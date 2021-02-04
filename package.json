@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "",
+    "build": "webpack",
     "start": ""
   },
   "repository": "https://github.com/LuisFOsG/Graficas-Chartjs.git",
-  "author": "Luis Osorio <luisfernandogarciaosorio@gmail.com>",
+  "author": "LuisFOsG",
   "license": "MIT",
   "dependencies": {
-    "webpack": "^5.20.2"
+    "webpack": "^5.20.2",
+    "webpack-cli": "^4.5.0"
   }
 }
