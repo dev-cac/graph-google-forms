@@ -69,7 +69,7 @@ Dar inicio al archivo encargado de las graficas.
 iniciar();
 ```
 
-<img src="./img/Graficas.png" >
+<img src="https://github.com/LuisFOsG/Graficas-Chartjs/blob/dev/img/Graficas.png" >
 
 ---
 
