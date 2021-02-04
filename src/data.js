@@ -1,4 +1,5 @@
-import "./chartjs";
+import 'jquery';
+import "./chart";
 
 var pregunta = [];
 var respuesta = [];

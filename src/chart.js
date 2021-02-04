@@ -1,3 +1,5 @@
+import Chart from 'chart.js';
+
 export function graficar(ctx, tipo, titulo, datos){
     let opcion;
     var opciones = [];
