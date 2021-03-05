@@ -6,7 +6,7 @@ var respuesta = [];
 
 /* Cargar Archivo e Iniciar Graficas  ======================================================================================= */
 
-function iniciar() {
+export function iniciar() {
     $.ajax({
         url: nombreArchivo + ".csv",
         dataType: "text",
