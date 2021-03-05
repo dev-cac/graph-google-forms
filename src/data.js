@@ -16,7 +16,7 @@ export function iniciar() {
 
 function leerCsv(texto, separador = '",', encabezado = incluirNombrePreguntas) {
     if (typeof texto !== "string") {
-        throw TypeError("El argumento debe ser una cadena de texto");
+        console.log("Error");
     }
     return texto
         .slice(encabezado ? 0 : texto.indexOf("\n") + 1)
@@ -31,7 +31,7 @@ function parseData(data) {
         if (datos) {
             cargar(datos);
         } else {
-            throw TypeError("No hay ningun tipo de dato...");
+            console.log("Error Al cargar Datos");
         }
     } catch (e) {
         console.error("Error:" + e);

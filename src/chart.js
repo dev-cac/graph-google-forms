@@ -36,7 +36,7 @@ export function graficar(ctx, tipo, titulo, datos){
                 callbacks: {
                   label: function(tooltipItem, data) {
                     var dataset = data.datasets[tooltipItem.datasetIndex];
-                    var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                    var total = dataset.data.reduce(function(previousValue, currentValue, _currentIndex, _array) {
                       return previousValue + currentValue;
                     });
 
@@ -75,7 +75,8 @@ export function graficar(ctx, tipo, titulo, datos){
 
     /* Graficamos */
     let ctxx = document.getElementById(ctx).getContext("2d");
-    const chart = new Chart(ctxx, {
+
+    new Chart(ctxx, {
         type: tipo,
         data: {
             labels: opciones,

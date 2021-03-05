@@ -1,4 +1,5 @@
-<img src="https://github.com/LuisFOsG/Graficas-Chartjs/blob/dev/img/Graficas.png" >
+
+<img src="https://raw.githubusercontent.com/LuisFOsG/Graficas-Chartjs/dev/img/Graficas.png" >
 
 ---
 
