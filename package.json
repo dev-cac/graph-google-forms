@@ -3,16 +3,23 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": ""
+    "start": "babel-node src/index.js",
+    "dev": "nodemon test/index.js --exec babel-node",
+    "build": "esbuild src/index.js --bundle --minify --platform=node --outdir=dist",
+    "build:test": "esbuild test/index.js --bundle --minify --platform=node --outdir=dist"
   },
   "repository": "https://github.com/LuisFOsG/Graficas-Chartjs.git",
   "author": "LuisFOsG",
   "license": "MIT",
   "dependencies": {
-    "chart.js": "^2.9.4",
-    "jquery": "^3.5.1",
-    "webpack": "^5.20.2",
-    "webpack-cli": "^4.5.0"
+    "chart.js": "3.7.1",
+    "esbuild": "0.14.28"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.17.6",
+    "@babel/core": "7.17.8",
+    "@babel/node": "7.16.8",
+    "@babel/preset-env": "7.16.11",
+    "nodemon": "2.0.15"
   }
 }
