@@ -1,5 +1,4 @@
-import { graphChart } from '../src/index';
-import { join } from 'path'
+import { graphChart } from 'graph-chart';
 
-const path = join(__dirname, "./test.csv")
-graphChart(path);
+const path = "./test.csv"
+graphChart('', path, {});

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "graph-chart": ["./src/index.js"]
+      "graph-chart": ["./src"]
     }
   }
 }

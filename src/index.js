@@ -1,13 +1,16 @@
-import csv from 'csv-parser'
-import fs from 'fs'
+const readFetch = async (fileName) => {
+  const Papa = await import('papaparse');
 
-export const graphChart = (fileName) => {
-  const results = [];
+  const res = await fetch(fileName);
+  const csv = await res.text()
+  const data = Papa.parse(csv)
 
-  fs.createReadStream(fileName)
-    .pipe(csv())
-    .on('data', (data) => results.push(data))
-    .on('end', () => file(results));
+  return data
+}
+
+export const graphChart = async ($elm, fileName, options) => {
+  const data = await readFetch(fileName)
+  file(data);
 }
 
 export const file = (data) => {
