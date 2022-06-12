@@ -5,7 +5,7 @@ let questions = []
 let answers = []
 
 export const graphChart = async ($elm, fileName, options = defaultSettings) => {
-  if (!$elm || !fileName || !options) return console.error('Missing arguments for graphChart');
+  if (!$elm || !fileName) return console.error('Missing arguments for graphChart');
 
   const data = await readFetch(fileName)
   file($elm, data, options);
@@ -21,12 +21,30 @@ const readFetch = async (fileName) => {
   return data.data
 }
 
-export const file = ($elm, data, options = defaultSettings) => {
-  if (!$elm || !data || !options) return console.error('Missing arguments for file:graphChart');
+const sortAnswers = (answers) => {
+  const tempAnswers = []
+  let memory = []
 
+  for(let i = 0; i < answers[0].length; i++) {
+    for(let j = 0; j < answers.length; j++) {
+      memory.push(answers[j][i])
+    }
+    tempAnswers.push(memory)
+    memory = []
+  }
+
+  return tempAnswers
+}
+
+export const file = ($elm, data, options = defaultSettings) => {
+  if (!$elm || !data) return console.error('Missing arguments for file:graphChart');
   if(options.includeTitle) questions = data[0];
+
   data.shift();
-  answers = data;
+  questions.shift();
+
+  for(let i of data) { i.shift(); }
+  answers = sortAnswers(data)
 
   if(options.showInfo) {
     console.log(questions)

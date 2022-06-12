@@ -15,7 +15,7 @@ export function load($elm, questions, answers, options) {
   const ctx = [];
 
   for (let i = 0; i < answers.length; i++) {
-    let id = "num" + i;
+    let id = `graph-${Date.now()}#${i}`;
     ctx.push(id);
   }
 
@@ -24,6 +24,6 @@ export function load($elm, questions, answers, options) {
   }
 
   for (let i = 0; i < answers.length; i++) {
-    graph(ctx[i], options.typeGraph[i] || options.defaultGraph, questions[i], answers[i]);
+    graph(ctx[i], options.typeGraph[i] || options.defaultGraph, questions[i] || '', answers[i]);
   }
 }

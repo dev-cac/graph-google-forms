@@ -11,6 +11,7 @@ export const graph = (ctx, type, title, data) => {
       select.push(0);
     }
   }
+
   options.sort();
 
   for(let i=0;i<data.length;i++){
@@ -49,5 +50,5 @@ var dynamicColors = function() {
   var r = Math.floor(Math.random() * 255);
   var g = Math.floor(Math.random() * 255);
   var b = Math.floor(Math.random() * 255);
-  return "rgb(" + r + "," + g + "," + b + ")";
+  return "rgba(" + r + "," + g + "," + b + ", 0.5)";
 }
