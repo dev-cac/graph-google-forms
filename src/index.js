@@ -1,10 +1,12 @@
-import { defaultSettings } from './settings'
+import { defaultSettings, setSettings } from './settings'
 import { load } from './domElements'
 
 let questions = []
 let answers = []
 
-export const graphChart = async ($elm, fileName, options = defaultSettings) => {
+export const graphChart = async ($elm, fileName, options = {}) => {
+  options = setSettings(options)
+
   if (!$elm || !fileName) return console.error('Missing arguments for graphChart');
 
   const data = await readFetch(fileName)
@@ -36,9 +38,11 @@ const sortAnswers = (answers) => {
   return tempAnswers
 }
 
-export const file = ($elm, data, options = defaultSettings) => {
+export const file = ($elm, data, options = {}) => {
+  options = setSettings(options)
+
   if (!$elm || !data) return console.error('Missing arguments for file:graphChart');
-  if(options.includeTitle) questions = data[0];
+  if(options.style.includeTitle) questions = data[0];
 
   data.shift();
   questions.shift();
@@ -46,7 +50,7 @@ export const file = ($elm, data, options = defaultSettings) => {
   for(let i of data) { i.shift(); }
   answers = sortAnswers(data)
 
-  if(options.showInfo) {
+  if(options.style.showInfo) {
     console.log(questions)
     console.log(answers)
   }

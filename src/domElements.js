@@ -20,10 +20,18 @@ export function load($elm, questions, answers, options) {
   }
 
   for (let i = 0; i < ctx.length; i++) {
-    createElement($elm, ctx[i], options.class);
+    createElement($elm, ctx[i], options.style.class);
   }
 
   for (let i = 0; i < answers.length; i++) {
-    graph(ctx[i], options.typeGraph[i] || options.defaultGraph, questions[i] || '', answers[i]);
+    const type = options.typeGraph[i] || options.defaultGraph
+
+    graph({
+      ctx: ctx[i],
+      type,
+      title: questions[i],
+      data: answers[i],
+      options
+    });
   }
 }

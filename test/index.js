@@ -6,15 +6,17 @@ const path = "./test.csv"
 
 const settings = {
   defaultGraph: "polarArea",
-  class: 'col s12 m12 l6',
+  style: {
+    class: 'col s12 m12 l6',
+    showInfo: true,
+    includeTitle: true,
+  },
   typeGraph: [
     "doughnut",
     "line",
     "bar",
     "pie"
-  ],
-  showInfo: true,
-  includeTitle: true,
+  ]
 }
 
 graphChart(graphDom, path, settings);

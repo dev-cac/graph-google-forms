@@ -1,7 +1,21 @@
 export const defaultSettings = {
   defaultGraph: "polarArea",
-  class: '',
   typeGraph: [],
-  showInfo: true,
-  includeTitle: true,
+  style: {
+    class: '',
+    showInfo: true,
+    includeTitle: true,
+    opacityColor: 0.6
+  }
+}
+
+export const setSettings = (userSettings) => {
+  return {
+    ...defaultSettings,
+    ...userSettings,
+    style: {
+      ...defaultSettings.style,
+      ...userSettings.style,
+    }
+  }
 }

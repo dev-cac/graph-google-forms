@@ -1,36 +1,38 @@
 import Chart from 'chart.js/auto'
 
-export const graph = (ctx, type, title, data) => {
+export const graph = ({
+  ctx, type, title, data, options
+}) => {
   let option;
-  let options = [];
-  let select = [];
+  let selectTitle = [];
+  let selectCount = [];
 
   for(let i=0;i<data.length;i++){
-    if(options.indexOf(data[i]) == -1){
-      options.push(data[i]);
-      select.push(0);
+    if(selectTitle.indexOf(data[i]) == -1){
+      selectTitle.push(data[i]);
+      selectCount.push(0);
     }
   }
 
-  options.sort();
+  selectTitle.sort();
 
   for(let i=0;i<data.length;i++){
-    if(options.indexOf(data[i]) != -1){
-      select[options.indexOf(data[i])]++;
+    if(selectTitle.indexOf(data[i]) != -1){
+      selectCount[selectTitle.indexOf(data[i])]++;
     }
   }
 
-  let ctxx = document.getElementById(ctx).getContext("2d");
-  new Chart(ctxx, {
+  let newCtx = document.getElementById(ctx).getContext("2d");
+  new Chart(newCtx, {
     type,
     data: {
-      labels: options,
+      labels: selectTitle,
       datasets: [
         {
-          label: title,
+          label: title || "",
           borderWidth: 2,
-          backgroundColor: poolColors(options.length),
-          data: select,
+          backgroundColor: poolColors(selectTitle.length, options.style.opacityColor),
+          data: selectCount,
         }
       ]
     },
@@ -38,17 +40,18 @@ export const graph = (ctx, type, title, data) => {
   });
 }
 
-var poolColors = function (a) {
+var poolColors = function (length, opacity) {
   var pool = [];
-  for(let i=0;i<a;i++){
-      pool.push(dynamicColors());
+  for(let i=0;i<length;i++){
+      pool.push(dynamicColors(opacity));
   }
   return pool;
 }
 
-var dynamicColors = function() {
+var dynamicColors = function(opacity) {
   var r = Math.floor(Math.random() * 255);
   var g = Math.floor(Math.random() * 255);
   var b = Math.floor(Math.random() * 255);
-  return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
