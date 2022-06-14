@@ -5,6 +5,8 @@ export const defaultSettings = {
     class: '',
     showInfo: true,
     includeTitle: true,
+    borderWidth: 5,
+    isDark: true,
     opacityColor: 0.6
   }
 }

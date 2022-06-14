@@ -1,4 +1,4 @@
-import { defaultSettings, setSettings } from './settings'
+import { setSettings } from './settings'
 import { load } from './domElements'
 
 let questions = []

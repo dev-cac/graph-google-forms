@@ -1,12 +1,13 @@
 import Chart from 'chart.js/auto'
+import randomColor from 'randomcolor'
 
 export const graph = ({
   ctx, type, title, data, options
 }) => {
-  let option;
   let selectTitle = [];
   let selectCount = [];
 
+  /* Se optienen los valores unicos */
   for(let i=0;i<data.length;i++){
     if(selectTitle.indexOf(data[i]) == -1){
       selectTitle.push(data[i]);
@@ -16,13 +17,28 @@ export const graph = ({
 
   selectTitle.sort();
 
+  /* Una vez ordenados se cuenta el numero de repeticiones */
   for(let i=0;i<data.length;i++){
     if(selectTitle.indexOf(data[i]) != -1){
       selectCount[selectTitle.indexOf(data[i])]++;
     }
   }
 
-  let newCtx = document.getElementById(ctx).getContext("2d");
+  createChart({
+    ctx, type, title, selectTitle, selectCount, options
+  })
+}
+
+const createChart = ({
+  ctx,
+  type,
+  title,
+  selectTitle,
+  selectCount,
+  options
+}) => {
+  const newCtx = document.getElementById(ctx).getContext("2d");
+
   new Chart(newCtx, {
     type,
     data: {
@@ -30,28 +46,71 @@ export const graph = ({
       datasets: [
         {
           label: title || "",
-          borderWidth: 2,
-          backgroundColor: poolColors(selectTitle.length, options.style.opacityColor),
+          borderWidth: options.style.borderWidth || 3,
+          backgroundColor: poolColors(selectTitle.length, options),
           data: selectCount,
         }
       ]
     },
-    options: option,
+    options: setOptions(type, title)
   });
 }
 
-var poolColors = function (length, opacity) {
-  var pool = [];
-  for(let i=0;i<length;i++){
-      pool.push(dynamicColors(opacity));
+const DEFAULT_GRAPHS = ["pie", "doughnut", "polarArea"];
+
+const setOptions = (type, title) => {
+  const tooltip = DEFAULT_GRAPHS.includes(type) ? {
+    callbacks: {
+      label: function(context) {
+        const currentValue = context.dataset.data[context.dataIndex];
+
+        const sum = context.dataset.data.reduce((acc, curr) => {
+          return acc + curr
+        }, 0)
+
+        const percentage = (currentValue / sum) * 100;
+
+        return `${context.label}: ${percentage.toFixed(2)}%`;
+      }
+    }
+  } : {}
+
+  const OPTIONS = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        align: 'center',
+        text: title,
+        fontSize: 15,
+        fullSize: true,
+        padding: 20,
+        color: "#121212"
+      },
+      tooltip,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }],
+        xAxes:[{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
   }
-  return pool;
+
+  return OPTIONS;
 }
 
-var dynamicColors = function(opacity) {
-  var r = Math.floor(Math.random() * 255);
-  var g = Math.floor(Math.random() * 255);
-  var b = Math.floor(Math.random() * 255);
-
-  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+var poolColors = function (length, options) {
+  return randomColor({
+    count: length,
+    luminosity: options.style.isDark ? 'dark' : 'light',
+    format: 'rgba',
+    alpha: options.style.opacityColor || 1
+  })
 }
