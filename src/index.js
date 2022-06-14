@@ -9,14 +9,16 @@ export const graphChart = async ($elm, fileName, options = {}) => {
 
   if (!$elm || !fileName) return console.error('Missing arguments for graphChart');
 
-  const data = await readFetch(fileName)
+  const data = await readFetch(fileName);
   file($elm, data, options);
 }
 
 const readFetch = async (fileName) => {
-  const Papa = await import('papaparse');
+  const Papa = await import('papaparse')
 
-  const res = await fetch(fileName);
+  const res = await fetch(fileName)
+  if (!res.ok) return console.error(`Error fetching file: ${fileName}`)
+
   const csv = await res.text()
   const data = Papa.parse(csv)
 

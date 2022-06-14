@@ -46,7 +46,9 @@ const createChart = ({
       datasets: [
         {
           label: title || "",
-          borderWidth: options.style.borderWidth || 3,
+          fillColor: '#000',
+          borderWidth: options.style.borderWidth,
+          borderColor: options.style.borderColor,
           backgroundColor: poolColors(selectTitle.length, options),
           data: selectCount,
         }
@@ -69,11 +71,25 @@ const setOptions = (type, title) => {
         }, 0)
 
         const percentage = (currentValue / sum) * 100;
+        const stringPercentage = percentage % 1 === 0 ? parseInt(percentage) : percentage.toFixed(2);
 
-        return `${context.label}: ${percentage.toFixed(2)}%`;
+        const label = `${context.label} (${stringPercentage}%)`;
+        return label;
       }
     }
-  } : {}
+  } : {
+    callbacks: {
+      title: function(context) {
+        return '';
+      },
+      label: function(context) {
+        const currentValue = context.dataset.data[context.dataIndex];
+
+        const label = `${context.label} (${currentValue})`;
+        return label;
+      }
+    }
+  }
 
   const OPTIONS = {
     responsive: true,
